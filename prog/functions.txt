@@ -1,0 +1,20 @@
+SET A 0x1
+
+JMP X 0x4 # Call function 1
+SET B 0x2
+
+HLT Z Z # Quit Program
+
+# Function 1
+ADD A 0x5
+SET C 0x6
+JMP X 0x8 # Call function 2
+HFT Z Z # Quit Function
+
+# Function 2
+ADD A 0xa
+SET D 0xc
+HFT Z Z # Quit Function
+
+
+SET E 0x1 # Never Call

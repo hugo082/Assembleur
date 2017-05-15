@@ -1,0 +1,14 @@
+SET B 0x41fc # Screen Index
+
+LD C 0x40fc # Load Input
+EZ C Z # Check if input is null
+JMC Z 0x1 # Boucle
+
+EQ C ASCII(q) # Input == q ?
+JMC Z 9 # Quit
+
+ST C B # Write on screen
+ADD B 1 # Increment screen index
+JMP Z 0x1 # Boucle
+
+HLT Z Z # Quit

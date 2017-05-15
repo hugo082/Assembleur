@@ -1,0 +1,38 @@
+SET A 0x424d # L0 - Screen position (1,1)
+
+JMP X 0x7 # L1 - Call Function
+ADD A 0x1
+EQ D ASCII(q)
+JMC Z 0x6 # Quit
+JMP Z 0x1 # Boucle
+
+HLT Z Z # L6
+
+# Function
+SET D 0x61 # First char
+SET E Y # Get current pc (pour pas dependre du main)
+MV G E # G sera utiliser pour les branchements
+LD F 0x40fc # Read input
+EZ F Z
+JMC Z E # Boucle if no input
+
+ADD G 0xa
+EQ F ASCII(n)
+JMC Z G # branchement if next
+
+ADD G 0x3
+EQ F ASCII(p)
+JMC Z G # branchement if previous
+
+ADD G 0x4
+ADD D 0x1
+JMP Z G # branchement pour eviter le moins
+
+SUB D 0x1
+
+ST D A # Print
+
+LT F ASCII(s)
+JMC Z E # Boucle
+SUB D 0x1 # compense le plus executer plus haut
+HFT Z Z # Quit Function

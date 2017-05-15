@@ -1,0 +1,11 @@
+
+SET A 10 # Count
+SET B 0 # Start
+
+# Start Boucle
+SET C Y # Save current pc
+ADD B 1
+LE B A # If b <= A
+JMC Z C # Go To Start Boucle
+
+HLT Z Z
